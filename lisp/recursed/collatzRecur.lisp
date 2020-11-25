@@ -6,6 +6,18 @@
 	((> value 1) (+ (collatz ( + ( * 3 value) 1)) 1 ))
 	(t 0)))   
 
+(defun arrange (array predicate)
+  (do ((length (length array))
+       (i 0 (1+ i)))
+      ((eql i length) array)
+    (do ((mindex i)
+         (min (aref array i))
+         (j i (1+ j)))
+        ((eql j length)
+         (rotatef (aref array i) (aref array mindex)))
+      (when (funcall predicate (aref array j) min)
+        (setf min (aref array j)
+              mindex j)))))
 
 
 
@@ -36,7 +48,7 @@
 
 (defvar ic)  
 
-(loop for i from 1 to 10
+(loop for i from 1 to 400000
    	do (setf ic 0)
    	(setf ic (collatz i))
 

@@ -1,5 +1,19 @@
 #!/usr/bin/sbcl --script
 
+(defun arrange (array predicate)
+  (do ((length (length array))
+       (i 0 (1+ i)))
+      ((eql i length) array)
+    (do ((mindex i)
+         (min (aref array i))
+         (j i (1+ j)))
+        ((eql j length)
+         (rotatef (aref array i) (aref array mindex)))
+      (when (funcall predicate (aref array j) min)
+        (setf min (aref array j)
+              mindex j)))))
+
+
 (defun getCollatz (start seqSize)
 	(setf seqSize 0)
 	(loop while (not(eq start 1)) do
@@ -39,7 +53,7 @@
 
 (defvar ic)  
 
-(loop for i from 1 to 10
+(loop for i from 1 to 400000
    	do (setf ic 0)
    	(setf ic (getCollatz i ic))
 
@@ -51,7 +65,8 @@
 	(when (/= ic (aref sequences 0))
 		(if ( < i (aref numbers 0))
 			(setf (aref numbers 0) i) ))
-		
+	;(arrange numbers true)
+	;(arrange sequences true)
 )
 
 (princ "Numbers")
