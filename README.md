@@ -16,9 +16,12 @@ To compile and run type: go run collatz.go   | or if you want the recursed progr
 Compiling and Running Julia
 
 To compile type: chmod u+x collatz.jl  | or if you want the recursed program|   To compile type: chmod u+x collatzRecur.jl
+
 To run type: collatz.jl  | or if you want the recursed program|   To compile type: collatzRecur.jl
 
 Compiling and Running Lisp
 
-To compile and run type: perl A1.py "type directory path here om command line"
+To compile type: chmod u+x collatz.lisp   | or if you want the recursed program|   To compile type: chmod u+x collatzRecur.lisp
+
+To run type: ./collatz.lisp  | or if you want the recursed program|   To compile type: ./collatzRecur.lisp
 
