@@ -11,9 +11,7 @@ To run type: a.out
 
 Compiling and Running Go
 
-To compile type: c++ A1.cpp
-To run type: a.out
-Then enter your desired directory
+To compile and run type: go run collatz.go   | or if you want the recursed program|   To compile type: go run collatzRecur.go
 
 Compiling and Running Julia
 
