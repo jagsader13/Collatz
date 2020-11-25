@@ -16,14 +16,49 @@ func collatz(x int) int {
     return count
 }
 
+func bubblesort(a []int) {
+    for itemCount := len(a) - 1; ; itemCount-- {
+        hasChanged := false
+        for index := 0; index < itemCount; index++ {
+            if a[index] > a[index+1] {
+                a[index], a[index+1] = a[index+1], a[index]
+                hasChanged = true
+            }
+        }
+        if hasChanged == false {
+            break
+        }
+    }
+}
+
 func main() {
-	var counter int 
-	var num int 
-	var originalNum int
-	fmt.Println("Enter the starting number: ")
-	fmt.Scanln(&num)
-	originalNum=num
-	counter=collatz(num)
-	fmt.Println("A starting value of ",originalNum," has ", counter , " steps.")
+    var ic int 
+    var i int
+    var maxIndex int
+    numbers := []int{0,0,0,0,0,0,0,0,0,0}
+    sequences := []int{0,0,0,0,0,0,0,0,0,0}
+    maxIndex=5000000000
+
+    bubblesort(numbers)
+    bubblesort(sequences)
+    i=1
+    for i < maxIndex {
+        ic=collatz(i)
+        if ic > sequences[0] {
+            sequences[0]=ic
+            numbers[0]=i
+        } else if ic == sequences[0] {
+            if i < numbers[0] {
+                numbers[0]=i
+            }
+        }
+        bubblesort(numbers)
+        bubblesort(sequences)
+        i=i+1
+    }
+
+    fmt.Println("Numbers: ", numbers)
+    fmt.Println("Sequences: ", sequences)
+    
 
 }
